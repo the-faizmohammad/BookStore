@@ -1,0 +1,15 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "In this project, I will build a basic website that allows users to add/remove books from a list. I will achieve that by using JavaScript objects and arrays. I will also need to dynamically modify the DOM and add basic events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "hint": "^7.1.10"
+  }
+}
