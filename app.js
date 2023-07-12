@@ -6,3 +6,25 @@ const bookTitle = document.getElementById('book-name');
 const bookAuthor = document.getElementById('author-name');
 // Initialize the book-collection array
 let bookCollection = [];
+function addBook() {
+    // Retrieve the values from the input fields
+    const title = bookTitle.value;
+    const author = bookAuthor.value;
+  
+    // Create a new book object
+    const newBook = {
+      title: title,
+      author: author
+    };
+  
+    // Add the new book to the bookCollection array
+    bookCollection.push(newBook);
+  
+    // Clear the input fields
+    bookTitle.value = '';
+    bookAuthor.value = '';
+  
+    // Optional: Update the book list in the UI
+    displayBookList();
+  }
+  
