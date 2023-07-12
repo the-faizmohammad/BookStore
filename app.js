@@ -35,5 +35,19 @@ function addBook() {
     // Optional: Update the book list in the UI
     displayBookList();
   }
+  function displayBookList() {
+    // Clear the existing content of the book list
+    bookList.innerHTML = '';
+  
+    // Iterate over the bookCollection array
+    bookCollection.forEach(book => {
+      // Create a new list item element for each book
+      const listItem = document.createElement('li');
+      listItem.textContent = `${book.title} by ${book.author}`;
+  
+      // Append the list item to the book list
+      bookList.appendChild(listItem);
+    });
+  }
   
   
