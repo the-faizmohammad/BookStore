@@ -21,3 +21,80 @@ class Book {
       this.loadBookCollection();
       this.displayBookList();
     }
+    addBook(event) {
+        event.preventDefault();
+  
+        const title = this.bookTitle.value;
+        const author = this.bookAuthor.value;
+  
+        const newBook = new Book(title, author);
+        this.books.push(newBook);
+  
+        this.clearInputFields();
+        this.displayBookList();
+        this.saveBookCollection();
+      }
+  
+      removeSelectedBook() {
+        const selectedBookIndex = this.getSelectedBookIndex();
+  
+        if (selectedBookIndex !== -1) {
+          this.books.splice(selectedBookIndex, 1);
+        }
+  
+        this.displayBookList();
+        this.saveBookCollection();
+      }
+  
+      getSelectedBookIndex() {
+        const listItems = document.querySelectorAll('#my-book-list li');
+  
+        for (let i = 0; i < listItems.length; i++) {
+          const listItem = listItems[i];
+  
+          if (listItem.classList.contains('selected')) {
+            return i;
+          }
+        }
+  
+        return -1;
+      }
+  
+      displayBookList() {
+        this.bookList.innerHTML = '';
+  
+        this.books.forEach((book, index) => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${book.title} by ${book.author}`;
+  
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remove';
+          removeButton.addEventListener('click', () => this.removeBook(index));
+  
+          listItem.appendChild(removeButton);
+          this.bookList.appendChild(listItem);
+        });
+      }
+  
+      removeBook(index) {
+        this.books.splice(index, 1);
+        this.displayBookList();
+        this.saveBookCollection();
+      }
+  
+      clearInputFields() {
+        this.bookTitle.value = '';
+        this.bookAuthor.value = '';
+      }
+  
+      saveBookCollection() {
+        localStorage.setItem('bookCollection', JSON.stringify(this.books));
+      }
+  
+      loadBookCollection() {
+        const storedCollection = localStorage.getItem('bookCollection');
+        this.books = storedCollection ? JSON.parse(storedCollection) : [];
+      }
+    }
+  
+    const bookCollection = new BookCollection();
