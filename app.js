@@ -27,4 +27,13 @@ function addBook() {
     // Optional: Update the book list in the UI
     displayBookList();
   }
+
+  function removeBook(title) {
+    // Filter out the book with the specified title
+    bookCollection = bookCollection.filter(book => book.title !== title);
+  
+    // Optional: Update the book list in the UI
+    displayBookList();
+  }
+  
   
