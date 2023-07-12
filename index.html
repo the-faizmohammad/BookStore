@@ -9,12 +9,16 @@
 </head>
 <body>
     <h1>Awesome Book Collection</h1>
-    <ul id="book-list"></ul>
-    <form id="add-form">
-       <input type="text" id="title-input" placeholder="Title" required>
-        <input type="text" id="author-input" placeholder="Author" required>
-        <button class="add-btn" type="submit">Add Book</button>
+    <form id="form">
+      <label for="book-name">Title:</label>
+      <input type="text" id="book-name" required>
+      <label for="author-name">Author:</label>
+      <input type="text" id="author-name" required>
+      <button type="submit" id="add-button">Add</button>
     </form>
+    <h2>Book List</h2>
+    <ul id="my-book-list"></ul>
+    <button id="remove-button">Remove Selected Book</button>
     <script src="app.js"></script>
 </body>
 
