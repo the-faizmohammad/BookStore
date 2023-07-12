@@ -59,7 +59,8 @@ addButton.addEventListener('click', addBook);
 
 // Add event listener for the remove button
 removeButton.addEventListener('click', removeSelectedBook);
-
+// Initialize the bookCollection array with the data from localStorage
+let bookCollection = loadBookCollection();
 // Function to add a new book to the collection
 function addBook(event) {
   event.preventDefault();
@@ -97,6 +98,8 @@ function removeSelectedBook() {
 
   // Update the book list in the UI
   displayBookList();
+   // Save the updated book collection to localStorage
+   saveBookCollection();
 }
 
 // Function to get the index of the selected book
@@ -151,4 +154,19 @@ function removeBook(index) {
 
   // Update the book list in the UI
   displayBookList();
+  saveBookCollection();
+
 }
+// Function to save the book collection to localStorage
+function saveBookCollection() {
+    localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
+  }
+  
+  // Function to load the book collection from localStorage
+  function loadBookCollection() {
+    const storedCollection = localStorage.getItem('bookCollection');
+    return storedCollection ? JSON.parse(storedCollection) : [];
+  }
+  
+  // Call the displayBookList function to initially display the books in the collection
+  displayBookList();
